@@ -6,9 +6,13 @@ const { validatePostId, validatePost } = require('../middleware/middleware');
 const router = express.Router();
 
 
+
+ 
+    router.get('/:message', (req, res) => {
+      const message = process.env.MESSAGE || "hello from localhost"
+      res.status(200).json ({api: "up", message});
+    })
 router.get('/', (req, res) => {
-  const message = process.env.MESSAGE || "hello from localhost"
-  res.status(200).json ({api: "up", message});
   // do your magic!
   posts.get(req.query)
   .then(post => {
