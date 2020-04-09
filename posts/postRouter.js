@@ -7,6 +7,8 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
+  const message = process.env.MESSAGE || "hello from localhost"
+  res.status(200).json ({api: "up", message});
   // do your magic!
   posts.get(req.query)
   .then(post => {
